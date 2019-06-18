@@ -17,7 +17,8 @@ export class RzeszowiakService {
   }
 
   public getParcels(): Observable<any> {
-    return this.httpService.get('http://www.rzeszowiak.pl/Nieruchomosci-Sprzedam-3070011995?r=dzialki', { responseType: 'arraybuffer' })
+    return this.httpService.get('http://www.rzeszowiak.pl/Nieruchomosci-Sprzedam-3070011995?r=dzialki',
+      { responseType: 'arraybuffer', maxRedirects: 20 })
       .pipe(map(res => {
         const html = iso88592.decode(res.data.toString('binary'));
         const root: HTMLElement = parse(html) as (HTMLElement & { valid: boolean; });
