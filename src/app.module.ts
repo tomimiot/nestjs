@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
+import { RzeszowiakModule } from './rzeszowiak/rzeszowiak.module';
 
 @Module({
   imports: [CatsModule, TypeOrmModule.forRoot({
@@ -18,7 +19,7 @@ import { UsersModule } from './users/users.module';
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true,
     ssl: true,
-  }), AuthModule, UsersModule],
+  }), AuthModule, UsersModule, RzeszowiakModule],
   controllers: [AppController],
   providers: [AppService, UsersService],
 })
